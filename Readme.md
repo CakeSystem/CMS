@@ -46,7 +46,7 @@ CMS  安全客户端具备以下特点：
 - 线路1（GitHub 官方地址，若无法访问请使用其他线路）：
 
 ```sh
-bash <(curl -s -L https://raw.githubusercontent.com/CakeSystem/RMS/main/install.sh)
+bash <(curl -s -L https://raw.githubusercontent.com/CakeSystem/CMS/main/install.sh)
 ```
 
 - 线路2：
@@ -69,14 +69,14 @@ wget -N https://rustminersystem.com/install.sh; chmod +x ./install.sh; ./install
 
 ### 图形化界面版本
 - 下载地址：  
-  https://github.com/CakeSystem/RMS/raw/main/windows-gui/rms.exe
+  https://github.com/CakeSystem/CMS/raw/main/windows-gui/rms.exe
   
 - 如遇白屏问题，请安装 WebView2：  
-  https://github.com/CakeSystem/RMS/raw/main/windows-gui/MicrosoftEdgeWebview2Setup.exe
+  https://github.com/CakeSystem/CMS/raw/main/windows-gui/MicrosoftEdgeWebview2Setup.exe
 
 ### 非图形化命令行版本
 - 下载地址：  
-    https://github.com/CakeSystem/RMS/raw/main/windows-no-gui/rms.exe
+    https://github.com/CakeSystem/CMS/raw/main/windows-no-gui/rms.exe
 
 # 使用指南
 
