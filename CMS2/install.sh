@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#bash <(curl -s -L https://raw.githubusercontent.com/CakeSystem/RMS/CakeMiner2/main/install.sh)
-#bash <(curl -s -L -k https://raw.njuu.cf/CakeSystem/RMS/CakeMiner2/main/install.sh)
-#bash <(curl -s -L -k https://raw.yzuu.cf/CakeSystem/RMS/CakeMiner2/main/install.sh)
-#bash <(curl -s -L -k https://raw.nuaa.cf/CakeSystem/RMS/CakeMiner2/main/install.sh)
+#bash <(curl -s -L https://raw.githubusercontent.com/CakeSystem/CMS/CMS2/main/install.sh)
+#bash <(curl -s -L -k https://raw.njuu.cf/CakeSystem/CMS/CMS2/main/install.sh)
+#bash <(curl -s -L -k https://raw.yzuu.cf/CakeSystem/CMS/CMS2/main/install.sh)
+#bash <(curl -s -L -k https://raw.nuaa.cf/CakeSystem/CMS/CMS2/main/install.sh)
 clear
 
 [ $(id -u) != "0" ] && { echo "请使用ROOT用户进行安装, 输入sudo -i切换。"; exit 1; }
@@ -28,12 +28,12 @@ else
     fi
 fi
 
-SERVICE_NAME="CakeMinerervice"
+SERVICE_NAME="CMService"
 
-PATH_CakeMiner="/root/CakeMiner"
-PATH_EXEC="CakeMiner"
-PATH_NOHUP="${PATH_CakeMiner}/nohup.out"
-PATH_ERR="${PATH_CakeMiner}/err.log"
+PATH_CMS="/root/CMS"
+PATH_EXEC="CMS"
+PATH_NOHUP="${PATH_CMS}/nohup.out"
+PATH_ERR="${PATH_CMS}/err.log"
 
 ROUTE_1="https://github.com"
 ROUTE_2="http://rustminersystem.com"
@@ -41,15 +41,15 @@ ROUTE_2="http://rustminersystem.com"
 # ROUTE_3="https://hub.yzuu.cf"
 # ROUTE_4="https://hub.nuaa.cf"
 
-ROUTE_EXEC_1="/CakeSystem/RMS/CakeMiner2/raw/main/x86_64-musl/CakeMiner"
-ROUTE_EXEC_2="/CakeSystem/RMS/CakeMiner2/raw/main/x86_64-android/CakeMiner"
-ROUTE_EXEC_3="/CakeSystem/RMS/CakeMiner2/raw/main/arm-musleabi/CakeMiner"
-ROUTE_EXEC_4="/CakeSystem/RMS/CakeMiner2/raw/main/arm-musleabihf/CakeMiner"
-ROUTE_EXEC_5="/CakeSystem/RMS/CakeMiner2/raw/main/armv7-musleabi/CakeMiner"
-ROUTE_EXEC_6="/CakeSystem/RMS/CakeMiner2/raw/main/armv7-musleabihf/CakeMiner"
-ROUTE_EXEC_7="/CakeSystem/RMS/CakeMiner2/raw/main/i586-musl/CakeMiner"
-ROUTE_EXEC_8="/CakeSystem/RMS/CakeMiner2/raw/main/i686-android/CakeMiner"
-ROUTE_EXEC_9="/CakeSystem/RMS/CakeMiner2/raw/main/aarch64-musl/CakeMiner"
+ROUTE_EXEC_1="/CakeSystem/CMS/CMS2/raw/main/x86_64-musl/CMS"
+ROUTE_EXEC_2="/CakeSystem/CMS/CMS2/raw/main/x86_64-android/CMS"
+ROUTE_EXEC_3="/CakeSystem/CMS/CMS2/raw/main/arm-musleabi/CMS"
+ROUTE_EXEC_4="/CakeSystem/CMS/CMS2/raw/main/arm-musleabihf/CMS"
+ROUTE_EXEC_5="/CakeSystem/CMS/CMS2/raw/main/armv7-musleabi/CMS"
+ROUTE_EXEC_6="/CakeSystem/CMS/CMS2/raw/main/armv7-musleabihf/CMS"
+ROUTE_EXEC_7="/CakeSystem/CMS/CMS2/raw/main/i586-musl/CMS"
+ROUTE_EXEC_8="/CakeSystem/CMS/CMS2/raw/main/i686-android/CMS"
+ROUTE_EXEC_9="/CakeSystem/CMS/CMS2/raw/main/aarch64-musl/CMS"
 
 TARGET_ROUTE=""
 TARGET_ROUTE_EXEC=""
@@ -115,39 +115,39 @@ check_process() {
 # Function to set up auto-start and start the program
 wrt_enable_autostart() {
     echo "wrt_set_start"
-    if [ ! -f /etc/init.d/CakeMiner ]; then
-        # Create an init script for the "CakeMiner" service
-        echo "#!/bin/sh /etc/rc.common" > /etc/init.d/CakeMiner
-        echo "USE_PROCD=1" >> /etc/init.d/CakeMiner
-        echo "START=99" >> /etc/init.d/CakeMiner
-        echo "start() {" >> /etc/init.d/CakeMiner
-        echo "    /root/CakeMiner/CakeMiner &" >> /etc/init.d/CakeMiner
-        echo "}" >> /etc/init.d/CakeMiner
+    if [ ! -f /etc/init.d/CMS ]; then
+        # Create an init script for the "CMS" service
+        echo "#!/bin/sh /etc/rc.common" > /etc/init.d/CMS
+        echo "USE_PROCD=1" >> /etc/init.d/CMS
+        echo "START=99" >> /etc/init.d/CMS
+        echo "start() {" >> /etc/init.d/CMS
+        echo "    /root/CMS/CMS &" >> /etc/init.d/CMS
+        echo "}" >> /etc/init.d/CMS
         
-        echo "PROG=/root/CakeMiner/CakeMiner" >> /etc/init.d/CakeMiner
-        echo "start_service(){" >> /etc/init.d/CakeMiner
-        echo "  procd_open_instance" >> /etc/init.d/CakeMiner
-        echo "  procd_set_param command \$PROG" >> /etc/init.d/CakeMiner
-        echo "  procd_set_param respawn" >> /etc/init.d/CakeMiner
-        echo "  procd_close_instance" >> /etc/init.d/CakeMiner
-        echo "}" >> /etc/init.d/CakeMiner
+        echo "PROG=/root/CMS/CMS" >> /etc/init.d/CMS
+        echo "start_service(){" >> /etc/init.d/CMS
+        echo "  procd_open_instance" >> /etc/init.d/CMS
+        echo "  procd_set_param command \$PROG" >> /etc/init.d/CMS
+        echo "  procd_set_param respawn" >> /etc/init.d/CMS
+        echo "  procd_close_instance" >> /etc/init.d/CMS
+        echo "}" >> /etc/init.d/CMS
 
-        chmod +x /etc/init.d/CakeMiner
+        chmod +x /etc/init.d/CMS
     fi
 
-    /etc/init.d/CakeMiner enable
-    /etc/init.d/CakeMiner start
+    /etc/init.d/CMS enable
+    /etc/init.d/CMS start
 }
 
 # Function to stop auto-start and stop the program
 wrt_disable_autostart() {
     echo "wrt_set_disable"
-    if [ -f /etc/init.d/CakeMiner ]; then
-        # Stop the "CakeMiner" service
-        /etc/init.d/CakeMiner stop
+    if [ -f /etc/init.d/CMS ]; then
+        # Stop the "CMS" service
+        /etc/init.d/CMS stop
 
         # Remove the init script
-        rm /etc/init.d/CakeMiner
+        rm /etc/init.d/CMS
     fi
 }
 
@@ -163,11 +163,11 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=$PATH_CakeMiner/$PATH_EXEC
-WorkingDirectory=$PATH_CakeMiner/
+ExecStart=$PATH_CMS/$PATH_EXEC
+WorkingDirectory=$PATH_CMS/
 Restart=always
-StandardOutput=file:$PATH_CakeMiner/nohup.out
-StandardError=file:$PATH_CakeMiner/err.log
+StandardOutput=file:$PATH_CMS/nohup.out
+StandardError=file:$PATH_CMS/err.log
 TimeoutStopSec=5
 
 [Install]
@@ -177,7 +177,7 @@ EOF
         sudo systemctl enable $SERVICE_NAME.service
         sudo systemctl start $SERVICE_NAME.service
     else
-        sudo sh -c "echo '${PATH_CakeMiner}/${PATH_EXEC} &' >> /etc/rc.local"
+        sudo sh -c "echo '${PATH_CMS}/${PATH_EXEC} &' >> /etc/rc.local"
         sudo chmod +x /etc/rc.local
     fi
 }
@@ -335,9 +335,9 @@ install() {
         esac
     fi
 
-    if [[ ! -d $PATH_CakeMiner ]];then
-        mkdir $PATH_CakeMiner
-        chmod 777 -R $PATH_CakeMiner
+    if [[ ! -d $PATH_CMS ]];then
+        mkdir $PATH_CMS
+        chmod 777 -R $PATH_CMS
     else
         echo "目录已存在, 无需重复创建, 继续执行安装。"
     fi
@@ -352,11 +352,11 @@ install() {
 
     echo "开始下载程序..."
 
-    wget -P $PATH_CakeMiner "${TARGET_ROUTE}${TARGET_ROUTE_EXEC}" -O "${PATH_CakeMiner}/${PATH_EXEC}" 1>/dev/null
+    wget -P $PATH_CMS "${TARGET_ROUTE}${TARGET_ROUTE_EXEC}" -O "${PATH_CMS}/${PATH_EXEC}" 1>/dev/null
 
     filterResult $? "下载程序"
 
-    chmod 777 -R "${PATH_CakeMiner}/${PATH_EXEC}"
+    chmod 777 -R "${PATH_CMS}/${PATH_EXEC}"
 
     change_limit
 
@@ -372,7 +372,7 @@ restart() {
 uninstall() {
     stop
 
-    rm -rf ${PATH_CakeMiner}
+    rm -rf ${PATH_CMS}
 
     if [ "$IS_OPENWRT" = true ]; then
         wrt_disable_autostart
@@ -433,11 +433,11 @@ stop() {
     sleep 1
 }
 
-echo "------CakeMiner Linux------"
+echo "------CMS Linux------"
 echo "1. 安装"
-echo "2. 停止运行CakeMiner"
-echo "3. 重启CakeMiner"
-echo "4. 卸载CakeMiner"
+echo "2. 停止运行CMS"
+echo "3. 重启CMS"
+echo "4. 卸载CMS"
 echo "---------------------"
 
 read -p "$(echo -e "[1-4]：")" comm
@@ -456,7 +456,7 @@ elif [ "$comm" = "4" ]; then
 fi
 
 
-echo "------CakeMiner Linux------"
+echo "------CMS Linux------"
 echo "当前CPU架构【${UNAME}】"
 echo 请选择对应架构安装选项。
 echo "---------------------"
@@ -478,7 +478,7 @@ TARGET_ROUTE_EXEC="${!VARNAME}"
 
 clear
 
-echo "------CakeMiner Linux------"
+echo "------CMS Linux------"
 echo "请选择下载线路:"
 echo "1. 线路1（github官方地址, 如无法下载请选择其他线路）"
 echo "2. 线路2"
